@@ -1,0 +1,37 @@
+{% extends 'stewarts/base.html'%}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% block body %}
+<body class="container">
+    <div class="row">
+        <div class="col-md-3">
+        <h2>PEST CALCULATOR</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="gallon">Gallons</label>
+                    <input type="text" class="form-control" id="gallon" name="gallon" placeholder="Gallons">
+                </div>
+                <div class="form-group">
+                    <label for="squareft">Enter in Square Footage code(example, 6,7,8,9,10)</label>
+                    <input type="text" class="form-control" id="squareft" name="squareft" placeholder="sqft">
+                </div>
+                <button type="submit" class="btn btn-primary">Calculate</button>
+            </form>
+        </div>
+    </div>
+    {% if total %}
+     <h3>Pest rate is = </h3>{{ total }}
+    {% endif %}
+{% endblock %}
+
+</body>
+</html>

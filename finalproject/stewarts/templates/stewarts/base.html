@@ -1,0 +1,44 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <img src="https://media.glassdoor.com/sqll/629431/stewarts-lawn-tree-and-pest-service-squarelogo-1517999252240.png" class="rounded float-left" alt="...">
+    <img src="https://stewartslawn.com/wp-content/uploads/2017/11/stewarts-logo1.png" class="rounded float-left" alt="...">
+
+    <div class="navbar">
+        <div class="btn-group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Services
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/tree/">Trees</a></li>
+        <li><a class="dropdown-item" href="/lawn/">Lawns</a></li>
+        <li><a class="dropdown-item" href="/pest/">Pest</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href='/home/'>Home</a></li>
+      </ul>
+    </div>
+        {% if user.is_authenticated %}
+            <a href="{%  url 'profile' %}" class="nav-item nav-link">Profile</a>
+            <a href="{%  url 'logout' %}" class="nav-item nav-link">Logout</a>
+            <a href="{%  url 'adviceform' %}" class="nav-item nav-link">Advice</a>
+        {% else %}
+            <a href="{%  url 'login' %}" class="nav-item nav-link">Login</a>
+            <a href="{%  url 'register' %}" class="nav-item nav-link">Register</a>
+        {% endif %}
+    </div>
+
+</nav>
+
+{% block body %}
+
+{% endblock %}
+</body>
+</html>

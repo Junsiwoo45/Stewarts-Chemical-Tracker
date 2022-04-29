@@ -1,0 +1,12 @@
+{% extends 'stewarts/base.html'%}
+
+{% block body %}
+<div class="row">
+   <div class="col-md-5 offset-md-3">
+        <h1>Welcome!</h1>
+        <h1>{{ user.username }}</h1>
+        <a href="/home/" class="nav-item nav-link">home</a>
+
+   </div>
+</div>
+{% endblock %}

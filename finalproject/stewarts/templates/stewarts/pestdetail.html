@@ -1,0 +1,44 @@
+{% extends 'stewarts/base.html'%}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+{% block body %}
+<div class="row">
+   <div class="col-md-5 offset-md-3">
+        <form action="" method="GET">
+            <input type="search" name="pest_pest_name">
+            <button type="submit">Search</button>
+        </form>
+
+        {% for pest_item in pest_object %}
+            {{ pest_item.pest_name }}
+            <br>
+            <img class="card" height="200px" src="{{pest_item.pest_image}}"/>
+            <br>
+        {% endfor %}
+
+        {% if pest_object.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ pest_object.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        Page: {{ pest_object.number }} of {{ pest_object.paginator.num_pages }}
+
+        {% if pest_object.has_next %}
+            <a href="?page={{ pest_object.next_page_number }}">Next</a>
+            <a href="?page={{ pest_object.paginator.num_pages }}">Last</a>
+        {% endif %}
+   </div>
+ </div>
+
+{% endblock %}
+</body>
+</html>

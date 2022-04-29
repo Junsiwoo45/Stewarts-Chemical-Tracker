@@ -1,0 +1,44 @@
+{% extends 'stewarts/base.html'%}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+{% block body %}
+<div class="row">
+   <div class="col-md-5 offset-md-5">
+        <form action="" method="GET">
+            <input type="search" name="tree_name">
+            <button type="submit">Search</button>
+        </form>
+
+        {% for tree_item in tree_object %}
+            {{ tree_item.tree_name }}
+            <br>
+            <img class="card" height="200px" src="{{tree_item.tree_image}}"/>
+            <br>
+        {% endfor %}
+
+        {% if tree_object.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ tree_object.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        Page: {{ tree_object.number }} of {{ tree_object.paginator.num_pages }}
+
+        {% if tree_object.has_next %}
+            <a href="?page={{ tree_object.next_page_number }}">Next</a>
+            <a href="?page={{ tree_object.paginator.num_pages }}">Last</a>
+        {% endif %}
+   </div>
+ </div>
+
+{% endblock %}
+</body>
+</html>
